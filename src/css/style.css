@@ -1,0 +1,53 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+button {
+    font-size: 20px;
+    border: none;
+    color: white;
+    background-color: rgb(185, 36, 36);
+    padding: 10px;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: rgb(99, 12, 12);
+}
+
+.popover {
+    position: absolute;
+
+}
+
+.popoverTitle {
+    border-radius: 3px 3px 0 0 ;
+    color: white;
+    padding: 5px;
+    font-size:15px;
+    background-color:rgb(58, 58, 58);
+    margin: 0 auto;
+}
+
+.popoverMessage {
+    border-radius:0 0 3px 3px;
+    background-color: rgba(128, 128, 128, 0.46);
+    padding: 5px;
+    font-size: 14px;
+    position: relative;
+}
+
+
+.popover:after {
+    content:'';
+    position:absolute;
+    left: 44%;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid rgba(128, 128, 128, 0.46); 
+}
+
