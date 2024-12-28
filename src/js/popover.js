@@ -6,30 +6,37 @@ export class Popover {
   }
 
   showPopover(title, message, element) {
-    this.removePopover();
+    const el = document.querySelector(".popover");
+    if (el) {
+      this.removePopover();
+    } else {
+      this.targetElement = element;
 
-    this.targetElement = element;
+      const popover = document.createElement("div");
+      popover.classList.add("popover");
 
-    const popover = document.createElement("div");
-    popover.classList.add("popover");
+      const popoverTitle = document.createElement("div");
+      popoverTitle.classList.add("popoverTitle");
+      popoverTitle.textContent = title;
 
-    const popoverTitle = document.createElement("div");
-    popoverTitle.classList.add("popoverTitle");
-    popoverTitle.textContent = title;
+      const popoverMessage = document.createElement("div");
+      popoverMessage.classList.add("popoverMessage");
+      popoverMessage.textContent = message;
 
-    const popoverMessage = document.createElement("div");
-    popoverMessage.classList.add("popoverMessage");
-    popoverMessage.textContent = message;
+      popover.append(popoverTitle, popoverMessage);
 
-    popover.append(popoverTitle, popoverMessage);
+      document.body.appendChild(popover);
 
-    document.body.appendChild(popover);
+      this.popover = popover;
 
-    this.popover = popover;
+      popover.addEventListener("click", () => {
+        this.removePopover();
+      });
 
-    this.updatePosition();
+      this.updatePosition();
 
-    window.addEventListener("resize", this.handleResize);
+      window.addEventListener("resize", this.handleResize);
+    }
   }
 
   removePopover() {
